@@ -7,11 +7,11 @@ import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ComboBox;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.layout.StackPane;
 import javafx.geometry.Pos;
 
 
@@ -28,17 +28,17 @@ public class TaskA extends Application
     {
         //Set stage title
         primaryStage.setTitle("Minion Banana Cart Designer");
+        
 
-        // Create ComboBox Controls
+        // Create ComboBox Controls for Cart Parts
         ComboBox<String> cartBodies = new ComboBox<>();
-        cartBodies.getItems().addAll("Banana Blaster","Jelly Lab Runner","Gru Escape Cart");
-
+        cartBodies.getItems().addAll("Banana Blaster [$60]","Jelly Lab Runner [$45]","Gru Escape Cart [$50]");
         ComboBox<String> engineAssemblies = new ComboBox<>();
-        engineAssemblies.getItems().addAll("7.75-inch axle", "8-inch axle", "8.5-inch axle");
-
+        engineAssemblies.getItems().addAll("7.75-inch axle [$35]", "8-inch axle [$40]", "8.5-inch axle [$45]");
         ComboBox<String> wheelSets = new ComboBox<>();
-        wheelSets.getItems().addAll("51 mm", "55 mm", "58 mm", "61 mm");
+        wheelSets.getItems().addAll("51 mm [$20]", "55 mm [$22] ", "58 mm [$24]", "61 mm [$28] ");
 
+        //Create VBox for  Cart Parts
         VBox bodyBox = new VBox
         (
             new Label("Cart Bodies"), 
@@ -55,16 +55,18 @@ public class TaskA extends Application
             wheelSets
         );
 
+        //Set Alignment for Cart Parts
         bodyBox.setAlignment(Pos.CENTER);
         engineBox.setAlignment(Pos.CENTER);
         wheelBox.setAlignment(Pos.CENTER);
-
+        //Set Spacing for Cart Parts
         bodyBox.setSpacing(5);
         engineBox.setSpacing(5);
         wheelBox.setSpacing(5);
         
+        //Comment
         HBox selections = new HBox(bodyBox, engineBox, wheelBox);
-        selections.setSpacing(20);
+        selections.setSpacing(25);
 
         // Create a VBox for the parts label 
         Label partsLabel = new Label("Select Cart Parts:");
@@ -72,15 +74,24 @@ public class TaskA extends Application
         Label suppliesLabel = new Label("Optional Supplies:");
         suppliesLabel.setAlignment(Pos.CENTER);
 
-        VBox cartParts = new VBox(partsLabel, selections, suppliesLabel);
+        CheckBox gripTape = new CheckBox("Banana grip tape [$10]");
+        CheckBox goggles = new CheckBox("Goggles [$30]");
+        CheckBox riserPads = new CheckBox("Riser pads [$2]");
+        CheckBox nutsBolts = new CheckBox("Nuts and bolts kit [$3]");
+
+        HBox supplies = new HBox(gripTape, goggles, riserPads, nutsBolts);
+        supplies.setAlignment(Pos.CENTER);
+        supplies.setSpacing(20);
+
+        VBox cartParts = new VBox(partsLabel, selections, suppliesLabel, supplies);
         cartParts.setAlignment(Pos.TOP_CENTER);
-        Scene scene = new Scene(cartParts, 500, 300);
+        cartParts.setStyle("-fx-background-color: #f9f0ac;");
+        Scene scene = new Scene(cartParts, 800, 400);
 
         primaryStage.setScene(scene);
         primaryStage.show();  
     } 
 }
  
-
 
 
