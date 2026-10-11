@@ -39,17 +39,30 @@ public class TaskA extends Application
         ComboBox<String> wheelSets = new ComboBox<>();
         wheelSets.getItems().addAll("51 mm", "55 mm", "58 mm", "61 mm");
 
-        VBox bodyBox = new VBox(
-            new Label("Cart Bodies", 
-            cartBodies));
-        VBox engineBox = new VBox(
-            new Label("Engine Assemblies",
-            engineAssemblies)
-            );
-        VBox wheelBox = new VBox(
-            new Label("Wheel Sets", 
-            wheelSets));
+        VBox bodyBox = new VBox
+        (
+            new Label("Cart Bodies"), 
+            cartBodies
+        );
+        VBox engineBox = new VBox
+        (
+            new Label("Engine Assemblies"),
+            engineAssemblies
+        );
+        VBox wheelBox = new VBox
+        (
+            new Label("Wheel Sets"), 
+            wheelSets
+        );
 
+        bodyBox.setAlignment(Pos.CENTER);
+        engineBox.setAlignment(Pos.CENTER);
+        wheelBox.setAlignment(Pos.CENTER);
+
+        bodyBox.setSpacing(5);
+        engineBox.setSpacing(5);
+        wheelBox.setSpacing(5);
+        
         HBox selections = new HBox(bodyBox, engineBox, wheelBox);
         selections.setSpacing(20);
 
