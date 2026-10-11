@@ -16,6 +16,15 @@ import javafx.geometry.Pos;
 
 public class TaskA extends Application 
 {
+    private ComboBox<String> cartBodies;
+    private ComboBox<String> engineAssemblies;
+    private ComboBox<String> wheelSets;
+
+    private CheckBox gripTape;
+    private CheckBox goggles;
+    private CheckBox riserPads;
+    private CheckBox nutsBolts;
+    
     public static void main(String [] args)
     {
         // Launch the apllication
@@ -54,9 +63,9 @@ public class TaskA extends Application
         ComboBox<String> cartBodies = new ComboBox<>();
         cartBodies.getItems().addAll("[$60] Banana Blaster","[$45] Jelly Lab Runner","[$50] Gru Escape Cart");
         ComboBox<String> engineAssemblies = new ComboBox<>();
-        engineAssemblies.getItems().addAll("[$35] 7.75-inch axle", "[$40] 8-inch axle", " [$45] 8.5-inch axle");
+        engineAssemblies.getItems().addAll("[$35] 7.75-inch axle", "[$40] 8-inch axle", "[$45] 8.5-inch axle");
         ComboBox<String> wheelSets = new ComboBox<>();
-        wheelSets.getItems().addAll("[$20] 51 mm", "[$22] 55 mm", " [$24] 58 mm", "[$28] 61 mm");
+        wheelSets.getItems().addAll("[$20] 51 mm", "[$22] 55 mm", "[$24] 58 mm", "[$28] 61 mm");
 
         Label cartLabel = new Label("Cart Bodies");
         Label engineLabel = new Label("Engine Assemblies");
@@ -93,10 +102,10 @@ public class TaskA extends Application
             suppliesLabel.setStyle("-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #2F5D8C");
 
 
-            CheckBox gripTape = new CheckBox("Banana grip tape [$10]");
-            CheckBox goggles = new CheckBox("Goggles [$30]");
-            CheckBox riserPads = new CheckBox("Riser pads [$2]");
-            CheckBox nutsBolts = new CheckBox("Nuts and bolts kit [$3]");
+            CheckBox gripTape = new CheckBox("[$10] Banana grip tape");
+            CheckBox goggles = new CheckBox("[$30] Goggles");
+            CheckBox riserPads = new CheckBox("[$2] Riser pads");
+            CheckBox nutsBolts = new CheckBox("[$3] Nuts and bolts kit");
 
             String supplyStyle = "-fx-font-size: 16px; -fx-text-fill: #2F5D8C";
             gripTape.setStyle(supplyStyle);
@@ -113,7 +122,8 @@ public class TaskA extends Application
             suppliesSection.setSpacing(15);
 
             return suppliesSection;
-        }   
+        }
+
 }
  
 
