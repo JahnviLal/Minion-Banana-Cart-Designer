@@ -225,6 +225,24 @@ public class TaskA extends Application
             subtotal +=28;    
         }
 
+        //Calculate Optional Supplies Cost
+        if(gripTape.isSelected())
+        {
+            subtotal +=10;
+        }
+        if(goggles.isSelected())
+        {
+            subtotal +=30;        
+        }
+        if(riserPads.isSelected())
+        {
+            subtotal +=2;    
+        }
+        if(nutsBolts.isSelected())
+        {
+            subtotal +=3;  
+        }
+
         return subtotal;
     }
 
