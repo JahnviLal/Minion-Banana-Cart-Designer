@@ -48,7 +48,7 @@ public class TaskA extends Application
         //Build the Interface
         Label partsLabel = new Label("Select Cart Parts:");
         partsLabel.setStyle("-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #2F5D8C");
-        Label spacer = new Label("\n");
+        Label spacer = new Label("\n\n\n\n\n");
 
         VBox cartParts = new VBox
         (
@@ -175,30 +175,58 @@ public class TaskA extends Application
     {
         double subtotal = 0;
 
-        String selectedBody = cartBodies.getValue();
-
-        if(selectedBody.equals("[$60] Banana Blaster"))
+        //Calculate Cart Bodies subtotal
+        String selectedCart = cartBodies.getValue();
+        if(selectedCart.equals("[$60] Banana Blaster"))
         {
             subtotal +=60;
         }
-        else if(selectedBody.equals("[$45] Jelly Lab Runner"))
+        else if(selectedCart.equals("[$45] Jelly Lab Runner"))
         {
             subtotal +=45;    
         }
-        else if(selectedBody.equals("[$50] Gru Escape Cart"))
+        else if(selectedCart.equals("[$50] Gru Escape Cart"))
         {
             subtotal +=50;        
         }
+
+        //Calculate Engine Assemblies subtotal
+        String selectedEngine = engineAssemblies.getValue();
+        if(selectedEngine.equals("[$35] 7.75-inch axle"))
+        {
+            subtotal +=35;
+        }
+        else if(selectedEngine.equals("[$40] 8-inch axle"))
+        {
+            subtotal +=40;    
+        }
+        else if(selectedEngine.equals("[$45] 8.5-inch axle"))
+        {
+            subtotal +=45;        
+        }
+
+        //Calculate Wheel Sets subtotal
+        String selectedWheel = wheelSets.getValue();
+
+        if(selectedWheel.equals( "[$20] 51 mm"))
+        {
+            subtotal +=20;
+        }
+        else if(selectedWheel.equals("[$22] 55 mm"))
+        {
+            subtotal +=22;    
+        }
+        else if(selectedWheel.equals("[$24] 58 mm"))
+        {
+            subtotal +=24;        
+        }
+        else if(selectedWheel.equals("[$28] 61 mm"))
+        {
+            subtotal +=28;    
+        }
+
         return subtotal;
     }
-      
-        //"[$35] 7.75-inch axle"
-        //"[$40] 8-inch axle"
-        //"[$45] 8.5-inch axle"
-        // "[$20] 51 mm"
-        // "[$22] 55 mm"
-        // "[$24] 58 mm"
-        // "[$28] 61 mm")
 
 }
  
