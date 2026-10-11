@@ -1,6 +1,6 @@
 //Jahnvi Lal
 //CS2450
-//Assignment 2
+//Assignment 1
 //10/11/2026
 
 import javafx.application.Application;
@@ -17,7 +17,7 @@ import javafx.geometry.Pos;
 
 public class TaskA extends Application 
 {
-    //Create Fields
+    //Create control fields - Interface & Calculation Logic
     private ComboBox<String> cartBodies;
     private ComboBox<String> engineAssemblies;
     private ComboBox<String> wheelSets;
@@ -33,19 +33,21 @@ public class TaskA extends Application
     private Label totalLabel;
     private Label messageLabel;
 
+    private static final double SALES_TAX_RATE = 0.07;
+
     public static void main(String [] args)
     {
-        // Launch the apllication
+        //Launch the application
         launch(args);
     }
 
     @Override
     public void start(Stage primaryStage)  
     {
-        //Set stage title
+        //Set the stage title
         primaryStage.setTitle("Minion Banana Cart Designer");
         
-        //Build the Interface
+        //Build the interface
         Label partsLabel = new Label("Select Cart Parts:");
         partsLabel.setStyle("-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #2F5D8C");
         Label spacer = new Label("\n\n\n\n\n");
@@ -69,7 +71,7 @@ public class TaskA extends Application
         primaryStage.show();
     }
 
-    //Create the cart parts selection controls
+    //Create cart parts selection controls
     private HBox cartPartsSection()
     {
         cartBodies = new ComboBox<>();
@@ -106,7 +108,7 @@ public class TaskA extends Application
         return selections;
     }
 
-        //Create option supplies controls
+        // Create optional supply controls
         private VBox suppliesSection()
         {
             Label suppliesLabel = new Label("Optional Supplies:");
@@ -145,6 +147,7 @@ public class TaskA extends Application
         totalLabel = new Label("Total: ");
         messageLabel = new Label();
         
+        // Calculate and display the order totals
         calculateButton.setOnAction(event -> 
         {
             if(cartBodies.getValue()==null || engineAssemblies.getValue()==null || wheelSets.getValue()==null)
@@ -155,7 +158,7 @@ public class TaskA extends Application
             messageLabel.setText("Selections Complete");
 
             double subtotal = calculateSubtotal();
-            double salesTax = subtotal * 0.07;
+            double salesTax = subtotal * SALES_TAX_RATE;
             double total = subtotal + salesTax;
 
             subtotalLabel.setText(String.format("Subtotal: $%.2f", subtotal));
@@ -163,7 +166,13 @@ public class TaskA extends Application
             totalLabel.setText(String.format("Total: $%.2f", total));
         });
 
-        VBox calculation = new VBox(calculateButton, subtotalLabel, salesTaxLabel, totalLabel);
+        VBox calculation = new VBox(
+            calculateButton,
+            messageLabel,
+            subtotalLabel,
+            salesTaxLabel,
+            totalLabel
+        );
 
         calculation.setAlignment(Pos.BOTTOM_LEFT);
         calculation.setSpacing(10);
@@ -175,7 +184,7 @@ public class TaskA extends Application
     {
         double subtotal = 0;
 
-        //Calculate Cart Bodies subtotal
+        //Add the selected cart body price
         String selectedCart = cartBodies.getValue();
         if(selectedCart.equals("[$60] Banana Blaster"))
         {
@@ -190,7 +199,7 @@ public class TaskA extends Application
             subtotal +=50;        
         }
 
-        //Calculate Engine Assemblies subtotal
+        //Add the selected engine assembly price
         String selectedEngine = engineAssemblies.getValue();
         if(selectedEngine.equals("[$35] 7.75-inch axle"))
         {
@@ -205,7 +214,7 @@ public class TaskA extends Application
             subtotal +=45;        
         }
 
-        //Calculate Wheel Sets subtotal
+        //Add the selected wheel set price
         String selectedWheel = wheelSets.getValue();
 
         if(selectedWheel.equals( "[$20] 51 mm"))
@@ -225,7 +234,7 @@ public class TaskA extends Application
             subtotal +=28;    
         }
 
-        //Calculate Optional Supplies Cost
+        //Add the price(s) of all selected optional supplies
         if(gripTape.isSelected())
         {
             subtotal +=10;
@@ -248,5 +257,3 @@ public class TaskA extends Application
 
 }
  
-
-
